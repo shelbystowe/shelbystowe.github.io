@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Shelby R. Stowe | Computational & Applied Mathematics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Crimson+Pro:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mines-blue: #264368;
+            --dark-slate: #1a2a3f;
+            --warm-cream: #f8f6f3;
+            --soft-gray: #e8e5e0;
+            --accent-copper: #b87333;
+            --text-primary: #2d2d2d;
+            --text-secondary: #5a5a5a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--warm-cream);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, var(--mines-blue) 0%, var(--dark-slate) 100%);
+            color: white;
+            padding: 5rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 70%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+
+        .header-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 300;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            font-size: 0.95rem;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.95;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            border-bottom: 1px solid var(--soft-gray);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .nav-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+        }
+
+        .nav-content a {
+            padding: 1.2rem 0.5rem;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .nav-content a:hover {
+            color: var(--mines-blue);
+            border-bottom-color: var(--accent-copper);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
+        section:nth-child(4) { animation-delay: 0.4s; }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--mines-blue);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-copper);
+        }
+
+        h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        h4 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--mines-blue);
+            margin-bottom: 0.3rem;
+        }
+
+        /* Entry Cards */
+        .entry {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 2px;
+            border-left: 4px solid var(--soft-gray);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+        }
+
+        .entry:hover {
+            border-left-color: var(--accent-copper);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transform: translateX(4px);
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 2rem;
+        }
+
+        .entry-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .entry-date {
+            color: var(--mines-blue);
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .entry-description {
+            color: var(--text-secondary);
+            margin-top: 0.75rem;
+            line-height: 1.7;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent-copper);
+        }
+
+        .publication {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--soft-gray);
+        }
+
+        .publication:last-child {
+            border-bottom: none;
+        }
+
+        .pub-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .pub-authors {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        .pub-journal {
+            color: var(--mines-blue);
+            font-weight: 600;
+            margin-top: 0.3rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, var(--mines-blue), var(--dark-slate));
+            color: white;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            border-radius: 2px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 12px rgba(38, 67, 104, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(38, 67, 104, 0.3);
+        }
+
+        /* Presentations Grid */
+        .presentations-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .presentation {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 2px;
+            border-left: 3px solid var(--accent-copper);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .pres-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .pres-venue {
+            color: var(--mines-blue);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .pres-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 0.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-slate);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .name {
+                font-size: 3rem;
+            }
+
+            .title {
+                font-size: 1.2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .entry-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--accent-copper);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .interests-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .interest-item {
+            background: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 20px;
+            border: 2px solid var(--soft-gray);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .interest-item:hover {
+            border-color: var(--accent-copper);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1 class="name">Shelby R. Stowe</h1>
+            <p class="title">PhD, Computational & Applied Mathematics</p>
+            <div class="contact-info">
+                <div class="contact-item">📧 sstowe@mines.edu</div>
+                <div class="contact-item">📱 479-903-2539</div>
+                <div class="contact-item">📍 Golden, CO 80401</div>
+                <div class="contact-item">💼 linkedin.com/in/shelby-r-stowe</div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-content">
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
+            <a href="#publications">Publications</a>
+            <a href="#presentations">Presentations</a>
+            <a href="#honors">Honors</a>
+            <a href="#funding">Funding</a>
+            <a href="#skills">Skills</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Professional Experience -->
+        <section id="professional">
+            <h2>Professional Experience</h2>
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>Postdoctoral Research Fellow</h3>
+                        <p class="entry-meta">Colorado School of Mines, Applied Mathematics & Statistics Department</p>
+                    </div>
+                    <div class="entry-date">March 2025 - Present</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education">
+            <h2>Education</h2>
+            
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>Doctor of Philosophy in Computational & Applied Mathematics</h3>
+                        <p class="entry-meta">Colorado School of Mines, Golden, CO</p>
+                    </div>
+                    <div class="entry-date">August 2019 - May 2024</div>
+                </div>
+                <p class="entry-description">
+                    <strong>Advisor:</strong> Dr. Cecilia Diniz Behn<br>
+                    <strong>Thesis:</strong> Data-driven Mathematical Models of Sleep and Circadian Physiology in Developmental and Pharmacological Contexts
+                </p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>Master of Science in Computational & Applied Mathematics</h3>
+                        <p class="entry-meta">Colorado School of Mines, Golden, CO</p>
+                    </div>
+                    <div class="entry-date">August 2019 - December 2021</div>
+                </div>
+                <p class="entry-description"><strong>GPA:</strong> 3.764/4.0</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>Bachelor of Science in Applied Mathematics</h3>
+                        <p class="entry-meta">Sterling College, Sterling, KS • Minor: Psychology</p>
+                    </div>
+                    <div class="entry-date">August 2015 - May 2019</div>
+                </div>
+                <p class="entry-description"><strong>GPA:</strong> 3.902/4.0</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>High School Diploma</h3>
+                        <p class="entry-meta">Ambassadors for Christ Academy, Bentonville, AR</p>
+                    </div>
+                    <div class="entry-date">August 2011 - May 2015</div>
+                </div>
+                <p class="entry-description">Valedictorian, summa cum laude</p>
+            </div>
+        </section>
+
+        <!-- Research Experience -->
+        <section id="experience">
+            <h2>Research Experience</h2>
+            
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>Graduate Research Assistant</h3>
+                        <p class="entry-meta">Department of Applied Mathematics & Statistics, Colorado School of Mines</p>
+                    </div>
+                    <div class="entry-date">June 2020 - May 2024</div>
+                </div>
+                <ul>
+                    <li><strong>Project #1:</strong> Modeling the Effects of Napping & Non-Napping Patterns of Light Exposure on the Human Circadian Oscillator</li>
+                    <li><strong>Project #2:</strong> Data-driven Mathematical Modeling of Sleep Consolidation in Early Childhood</li>
+                    <li><strong>Project #3:</strong> Analyzing the Interactions of Light & Melatonin in a Mathematical Model of the Human Circadian Oscillator</li>
+                    <li>Analyzed mathematical models of circadian dynamics and the sleep-wake regulatory network</li>
+                    <li>Converted existing mathematical models fit to adult dynamics to reflect the known physiology of early childhood</li>
+                    <li>Incorporated experimental data collected with preschool-aged participants into modeling frameworks</li>
+                    <li>Developed a novel mathematical model of the circadian oscillator to include the effects of melatonin</li>
+                    <li>Collected experimental data with the Sleep & Development Laboratory at the University of Colorado Boulder</li>
+                    <li>Published research in peer-reviewed journals</li>
+                    <li><strong>Supported by:</strong> NIH (PI: MK LeBourgeois), NSF (PI: C Diniz Behn)</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>Undergraduate Researcher</h3>
+                        <p class="entry-meta">Center for Industrial Mathematics & Statistics, Worcester Polytechnic Institute</p>
+                    </div>
+                    <div class="entry-date">May 2018 - July 2018</div>
+                </div>
+                <ul>
+                    <li><strong>Advisors:</strong> Dr. Andrea Arnold, Dr. Burt Tilley</li>
+                    <li><strong>Project:</strong> Modeling the Spatio-Temporal Dynamics of Interacting Fish Species on the Northeast Continental Shelf</li>
+                    <li><strong>Collaborator:</strong> Dr. Sarah Gaichas, research fishery biologist (Northeast Fisheries Science Center)</li>
+                    <li>Worked with three other undergraduate students</li>
+                    <li>Developed single-species and multi-species stock assessment models using partial differential equations for the purpose of comparison</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>Undergraduate Researcher</h3>
+                        <p class="entry-meta">Department of Biological Sciences, Wichita State University</p>
+                    </div>
+                    <div class="entry-date">August 2017 - August 2019</div>
+                </div>
+                <ul>
+                    <li><strong>Advisor:</strong> Dr. F. Leland Russell</li>
+                    <li><strong>Project:</strong> Modeling Control Methods to Manage the Sylvatic Plague in Black-Tailed Prairie Dog Towns</li>
+                    <li>Created a hybrid ordinary differential equation model and difference equation host-vector model of black-tailed prairie dogs and the prairie dog flea to simulate potential control methods of the sylvatic plague in prairie dog towns</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>Undergraduate Researcher</h3>
+                        <p class="entry-meta">Valparaiso Experience in Research by Undergraduate Mathematicians, Valparaiso University</p>
+                    </div>
+                    <div class="entry-date">May 2017 - August 2017</div>
+                </div>
+                <ul>
+                    <li><strong>Advisor:</strong> Dr. Alex Capaldi</li>
+                    <li><strong>Project:</strong> Modeling Vaccination Strategies to Control White-Nose Syndrome in Little Brown Bat Colonies</li>
+                    <li>Designed a hybrid ordinary differential equation model and difference equation model informed by the phenology of little brown bats to understand the efficacy of vaccinating bats against white-nose syndrome</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Publications -->
+        <section id="publications">
+            <h2>Publications</h2>
+            
+            <h4>Peer-reviewed Journal Articles</h4>
+            
+            <div class="publication">
+                <p class="pub-authors"><strong>S. Stowe</strong>, A. Duston, W. Robinson, & C. Diniz Behn</p>
+                <p class="pub-title">Analyzing the Interactions of Light & Melatonin in a Mathematical Model of the Human Circadian Oscillator</p>
+                <p class="pub-journal">Under review</p>
+            </div>
+
+            <div class="publication">
+                <p class="pub-authors">L. Hartstein, K. Wright, C. Diniz Behn, <strong>S. Stowe</strong>, & M. LeBourgeois</p>
+                <p class="pub-title">The Circadian Response to Evening Light Spectra in Early Childhood: Preliminary Insights</p>
+                <p class="pub-journal">Journal of Biological Rhythms (2025)</p>
+            </div>
+
+            <div class="publication">
+                <p class="pub-authors">C. Athanasouli, <strong>S. Stowe</strong>, M. LeBourgeois, V. Booth, & C. Diniz Behn</p>
+                <p class="pub-title">Data-driven Modeling of Sleep Consolidation In Early Childhood</p>
+                <p class="pub-journal">Journal of Theoretical Biology 593 (2024), 111892</p>
+            </div>
+
+            <div class="publication">
+                <p class="pub-authors"><strong>S. Stowe</strong>, M. LeBourgeois, & C. Diniz Behn</p>
+                <p class="pub-title">Modeling the Effects of Napping and Non-napping Patterns of Light Exposure on the Human Circadian Oscillator</p>
+                <p class="pub-journal">Journal of Biological Rhythms 38(5) (2023), 492-509</p>
+            </div>
+
+            <div class="publication">
+                <p class="pub-authors">L. Hartstein, C. Diniz Behn, K. Wright, L. Akacem, <strong>S. Stowe</strong>, & M. LeBourgeois</p>
+                <p class="pub-title">Evening Light Intensity and Phase Delay of the Circadian Clock in Early Childhood</p>
+                <p class="pub-journal">Journal of Biological Rhythms 38(1) (2022), 77-86</p>
+            </div>
+
+            <div class="publication">
+                <p class="pub-authors">D. Elzinga, <strong>S. Stowe</strong>, & L. Russell</p>
+                <p class="pub-title">Modeling Control Methods to Manage the Sylvatic Plague in Black-Tailed Prairie Dog Towns</p>
+                <p class="pub-journal">Natural Resource Modeling 33.2 (2020): e12255</p>
+            </div>
+
+            <div class="publication">
+                <p class="pub-authors">E. Cornwell, D. C. Elzinga, <strong>S. Stowe</strong>, & A. Capaldi</p>
+                <p class="pub-title">Modeling Vaccination Strategies to Control White-Nose Syndrome in Little Brown Bat Colonies</p>
+                <p class="pub-journal">Ecological Modelling 407 (2019), 1-8</p>
+            </div>
+
+            <h4 style="margin-top: 3rem;">Published Abstracts</h4>
+
+            <div class="publication">
+                <p class="pub-authors"><strong>S. Stowe</strong>, C. Athanasouli, M. LeBourgeois, V. Booth, & C. Diniz Behn</p>
+                <p class="pub-title">Data-driven Mathematical Modeling Of Sleep Consolidation in Early Childhood</p>
+                <p class="pub-journal">SLEEP 46 (2023), A50-A51</p>
+            </div>
+
+            <div class="publication">
+                <p class="pub-authors">L. Hartstein, L. Akacem, C. Diniz Behn, <strong>S. Stowe</strong>, K. Wright, & M. LeBourgeois</p>
+                <p class="pub-title">156 Evening Light-Induced Circadian Phase Shift in Preschool-Aged Children</p>
+                <p class="pub-journal">SLEEP 44 (2021), A63-A64</p>
+            </div>
+        </section>
+
+        <!-- Presentations -->
+        <section id="presentations">
+            <h2>Presentations</h2>
+            
+            <h4>Invited Presentations</h4>
+            <div class="presentations-grid">
+                <div class="presentation">
+                    <p class="pres-title">Bifurcations of Sleep-Wake Patterns Due to Developmentally Associated Changes in the Homeostatic Sleep Drive</p>
+                    <p class="pres-venue">Association for Women in Mathematics Research Symposium, Clark Atlanta University</p>
+                    <p class="pres-date">October 2023</p>
+                </div>
+
+                <div class="presentation">
+                    <p class="pres-title">Modeling the Effects of Napping & Non-Napping Patterns of Light Exposure on the Human Circadian Oscillator</p>
+                    <p class="pres-venue">Sleep & Development Laboratory Meeting, University of Colorado Boulder</p>
+                    <p class="pres-date">July 2023</p>
+                </div>
+
+                <div class="presentation">
+                    <p class="pres-title">Bifurcations of Sleep-Wake Patterns Due to Developmentally Associated Changes in the Homeostatic Sleep Drive</p>
+                    <p class="pres-venue">SIAM Conference on Applications of Dynamical Systems, Portland, OR</p>
+                    <p class="pres-date">May 2023</p>
+                </div>
+
+                <div class="presentation">
+                    <p class="pres-title">Bifurcations of Sleep-Wake Patterns Due to Developmentally Associated Changes in the Homeostatic Sleep Drive</p>
+                    <p class="pres-venue">Graduate Student Colloquium, Colorado School of Mines</p>
+                    <p class="pres-date">January 2023</p>
+                </div>
+
+                <div class="presentation">
+                    <p class="pres-title">Modeling the Effects of Napping and Non-napping Light Schedules on the Human Circadian Oscillator</p>
+                    <p class="pres-venue">SIAM Conference on the Life Sciences, Pittsburgh, PA</p>
+                    <p class="pres-date">July 2022</p>
+                </div>
+
+                <div class="presentation">
+                    <p class="pres-title">Modeling Control Methods to Manage the Sylvatic Plague in Black-Tailed Prairie Dog Towns</p>
+                    <p class="pres-venue">Sterling College</p>
+                    <p class="pres-date">April 2018</p>
+                </div>
+
+                <div class="presentation">
+                    <p class="pres-title">Modeling Vaccination Strategies to Control White-Nose Syndrome in Little Brown Bat Colonies</p>
+                    <p class="pres-venue">Sterling College</p>
+                    <p class="pres-date">April 2018</p>
+                </div>
+
+                <div class="presentation">
+                    <p class="pres-title">Modeling Vaccination Strategies to Control White-Nose Syndrome in Little Brown Bat Colonies</p>
+                    <p class="pres-venue">The Tenth International Symposium on Biomathematics & Ecology: Education & Research, Illinois State University</p>
+                    <p class="pres-date">October 2017</p>
+                </div>
+            </div>
+
+            <h4 style="margin-top: 3rem;">Poster Presentations</h4>
+            <div class="presentations-grid">
+                <div class="presentation">
+                    <p class="pres-title">Data-Driven Mathematical Modeling of Sleep Consolidation in Early Childhood</p>
+                    <p class="pres-venue">Mary A. Carskadon Sleep & Circadian Rhythms Summer Research Fellowship Retreat, Granby, CO</p>
+                    <p class="pres-date">August 2023</p>
+                </div>
+
+                <div class="presentation">
+                    <p class="pres-title">Data-Driven Mathematical Modeling of Sleep Consolidation in Early Childhood</p>
+                    <p class="pres-venue">SLEEP Meeting, Indianapolis, IN</p>
+                    <p class="pres-date">June 2023</p>
+                </div>
+
+                <div class="presentation">
+                    <p class="pres-title">Modeling the Effects of Napping and Non-napping Light Schedules on the Human Circadian Oscillator</p>
+                    <p class="pres-venue">Association for Women in Mathematics Research Symposium, University of Minnesota</p>
+                    <p class="pres-date">June 2022</p>
+                </div>
+
+                <div class="presentation">
+                    <p class="pres-title">Modeling the Effects of Napping and Non-napping Light Schedules on the Human Circadian Oscillator</p>
+                    <p class="pres-venue">Graduate Research and Discovery Symposium, Colorado School of Mines</p>
+                    <p class="pres-date">April 2022</p>
+                    <span class="badge">3rd Place Winner</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Honors & Awards -->
+        <section id="honors">
+            <h2>Honors & Awards</h2>
+            
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>Dr. Bhakta Rath and Sushama Rath Research Award Nominee</h3>
+                        <p class="entry-meta">Colorado School of Mines</p>
+                    </div>
+                    <div class="entry-date">2024</div>
+                </div>
+                <p class="entry-description">The top recognition at Mines for excellence in doctoral research recognizing the Mines doctoral graduate whose dissertation demonstrates the greatest potential for societal impact.</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>Graduate Research Award</h3>
+                        <p class="entry-meta">Applied Mathematics & Statistics Department, Colorado School of Mines</p>
+                    </div>
+                    <div class="entry-date">2024</div>
+                </div>
+                <p class="entry-description">Recognizes the outstanding achievements of graduating students.</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>3rd Place Poster Presentation</h3>
+                        <p class="entry-meta">Graduate Research and Discovery Symposium, Colorado School of Mines</p>
+                    </div>
+                    <div class="entry-date">2022</div>
+                </div>
+                <p class="entry-description">"Modeling the Effects of Napping and Non-napping Light Schedules on the Human Circadian Oscillator"</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>Meritorious Winner</h3>
+                        <p class="entry-meta">Mathematical Contest in Modeling, Sterling College Team</p>
+                    </div>
+                    <div class="entry-date">2019</div>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>Dr. Robert H. Thompson Endowed Mathematics and Natural Science Scholarship</h3>
+                        <p class="entry-meta">Sterling College</p>
+                    </div>
+                    <div class="entry-date">2018</div>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>2nd Place Oral Presentation</h3>
+                        <p class="entry-meta">Undergraduate Research and Creative Activity Forum, Wichita State University</p>
+                    </div>
+                    <div class="entry-date">2018</div>
+                </div>
+                <p class="entry-description">"Modeling Control Methods to Manage the Sylvatic Plague in Black-Tailed Prairie Dog Towns"</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>Honorable Mention</h3>
+                        <p class="entry-meta">22nd Annual Posters on the Hill</p>
+                    </div>
+                    <div class="entry-date">2018</div>
+                </div>
+                <p class="entry-description">"Modeling Vaccination Strategies to Control White-Nose Syndrome in Little Brown Bat Colonies"</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>Kelsey Scholar</h3>
+                        <p class="entry-meta">Sterling College</p>
+                    </div>
+                    <div class="entry-date">2017 - 2019</div>
+                </div>
+                <p class="entry-description">Full-time students who carry a GPA of at least 3.5 in both residential and cumulative GPA.</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>Dean's Honor Roll</h3>
+                        <p class="entry-meta">Sterling College</p>
+                    </div>
+                    <div class="entry-date">2015 - 2019</div>
+                </div>
+                <p class="entry-description">Awarded to students who completed the semester with a 3.5 GPA or better.</p>
+            </div>
+        </section>
+
+        <!-- Funding -->
+        <section id="funding">
+            <h2>Funding & Grants</h2>
+            
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>Dissertation Fellowship</h3>
+                        <p class="entry-meta">Applied Mathematics & Statistics Department, Colorado School of Mines</p>
+                    </div>
+                    <div class="entry-date">January - May 2024</div>
+                </div>
+                <p class="entry-description">Awarded funding to complete graduate research and doctoral thesis writing.</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>T32 Transdisciplinary Training in Sleep and Circadian Rhythms Training Grant</h3>
+                        <p class="entry-meta">National Institutes of Health, Predoctoral Fellowship, University of Colorado Boulder</p>
+                    </div>
+                    <div class="entry-date">January - December 2023</div>
+                </div>
+                <p class="entry-description">Awarded funding to complete the second project of doctoral thesis, "Data-Driven Mathematical Modeling of Sleep Consolidation in Early Childhood".</p>
+            </div>
+
+            <h4 style="margin-top: 3rem;">Travel Awards</h4>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>Travel Award</h3>
+                        <p class="entry-meta">Association for Women in Mathematics Research Symposium, Atlanta, GA</p>
+                    </div>
+                    <div class="entry-date">2023</div>
+                </div>
+                <p class="entry-description">Invited presentation: "Bifurcations of Sleep-Wake Patterns Due to Developmentally Associated Changes in the Homeostatic Sleep Drive"</p>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>Student Travel Award</h3>
+                        <p class="entry-meta">SIAM Conference on Applications of Dynamical Systems, Portland, OR</p>
+                    </div>
+                    <div class="entry-date">2023</div>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>Student Travel Award</h3>
+                        <p class="entry-meta">SIAM Conference on the Life Sciences, Pittsburgh, PA</p>
+                    </div>
+                    <div class="entry-date">2022</div>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h3>Travel Award</h3>
+                        <p class="entry-meta">Association for Women in Mathematics Research Symposium, Minneapolis, MN</p>
+                    </div>
+                    <div class="entry-date">2022</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills">
+            <h2>Programming Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-tag">GitHub</div>
+                <div class="skill-tag">LaTeX</div>
+                <div class="skill-tag">MATLAB</div>
+                <div class="skill-tag">Python</div>
+                <div class="skill-tag">R</div>
+            </div>
+        </section>
+
+        <!-- Leadership & Service -->
+        <section id="leadership">
+            <h2>Leadership & Service</h2>
+            
+            <h4>Colorado School of Mines</h4>
+            <ul>
+                <li>Nebraska Conference for Undergraduate Women in Mathematics, Invited Graduate Student (2024)</li>
+                <li>Mines Mathematics and Computing Collaborative, Volunteer (2023)</li>
+                <li>Mathematical Biology Research Group, Organizer (2020 - 2024)</li>
+                <li>Girls Lead the Way, Volunteer (2020, 2022, 2023)</li>
+                <li>Society for Women in Mathematics, Member (2019 - 2024)</li>
+            </ul>
+
+            <h4 style="margin-top: 2rem;">Sterling College</h4>
+            <ul>
+                <li>Mathematics Career Panel, Volunteer (2022)</li>
+                <li>Alpha Chi, Member (2018)</li>
+                <li>Kappa Mu Epsilon, President (2017)</li>
+                <li>Chess Club, President (2016 - 2018)</li>
+            </ul>
+
+            <h4 style="margin-top: 2rem;">Ambassadors for Christ Academy</h4>
+            <ul>
+                <li>Senior Leadership Team, Member (2014 - 2015)</li>
+                <li>Arkansas Girls State, Delegate (2014)</li>
+            </ul>
+        </section>
+
+        <!-- Interests -->
+        <section id="interests">
+            <h2>Interests</h2>
+            <div class="interests-list">
+                <div class="interest-item">🥾 Hiking</div>
+                <div class="interest-item">♟️ Chess</div>
+                <div class="interest-item">🏕️ Camping</div>
+                <div class="interest-item">🎲 Board Games</div>
+                <div class="interest-item">🧁 Baking</div>
+                <div class="interest-item">✈️ Traveling</div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Shelby R. Stowe | PhD, Computational & Applied Mathematics</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active state to nav on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = 'var(--text-secondary)';
+                link.style.borderBottomColor = 'transparent';
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.color = 'var(--mines-blue)';
+                    link.style.borderBottomColor = 'var(--accent-copper)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
